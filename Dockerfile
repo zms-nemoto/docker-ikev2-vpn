@@ -14,10 +14,13 @@ RUN apt-get update && apt-get install -y \
 EXPOSE 500:500/udp
 EXPOSE 4500:4500/udp
 
-COPY conf/ipsec.conf.template /etc/ipsec.conf
+COPY conf/ipsec.conf.template /etc/ipsec.d/ipsec.conf
 COPY conf/charon-logging.conf /etc/strongswan.d/charon-logging.conf
 COPY conf/charon.conf /etc/strongswan.d/charon.conf
-COPY conf/ipsec.secrets /etc/ipsec.secrets
+COPY conf/ipsec.secrets /etc/ipsec.d/ipsec.secrets
+
+RUN ln -sf /etc/ipsec.d/ipsec.conf /etc/ipsec.conf && \
+    ln -sf /etc/ipsec.d/ipsec.secrets /etc/ipsec.secrets
 
 COPY scripts/manage /usr/local/bin/manage
 RUN chmod u+x /usr/local/bin/manage

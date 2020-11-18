@@ -9,7 +9,7 @@ def show_certificate(arguments):
 
 
 def add_user(arguments):
-    with open('/etc/ipsec.secrets', 'a') as output_file:
+    with open('/etc/ipsec.d/ipsec.secrets', 'a') as output_file:
         print('{username} : EAP "{password}"'.format(**vars(arguments)), file=output_file)
     subprocess.run(['ipsec', 'rereadall'])
 

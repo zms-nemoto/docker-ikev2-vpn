@@ -23,7 +23,7 @@ if [ ! -d /pki ]; then
   cp /pki/server-key.pem /etc/ipsec.d/private/
   cp /pki/server-cert.pem /etc/ipsec.d/certs/
 
-  sed -i "s/{host}/$HOST/g" /etc/ipsec.conf
+  sed -i "s/{host}/$HOST/g" /etc/ipsec.d/ipsec.conf
 fi
 
 iptables -A INPUT -i lo -j ACCEPT
