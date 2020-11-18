@@ -12,6 +12,7 @@ Dockerized IKEv2 VPN server
         --sysctl net.ipv4.conf.all.send_redirects=0 \
         --sysctl net.ipv4.ip_no_pmtu_disc=1 \
         --volume=/lib/modules:/lib/modules \
+        --volume=/opt/vpn-setting/ipsec.d:/etc/ipsec.d \
         --publish=500:500/udp \
         --publish=4500:4500/udp \
         --env NAME="<VPN Server Name>" \
